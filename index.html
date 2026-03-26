@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Career Reset Sprint — Janell Saville</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --charcoal: #383838;
+    --yellow:   #FFC800;
+    --cream:    #F5EFE4;
+    --sand:     #E2D5C3;
+    --slate:    #5C5248;
+    --muted:    #9B8E84;
+    --soft:     #C8BFB5;
+    --light:    #FAF7F2;
+    --sand-dark:#C8B89A;
+    --white:    #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--slate);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--charcoal);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--yellow);
+  }
+  .cover-eyebrow {
+    padding: 18px 24px 0;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--yellow);
+    text-transform: uppercase;
+  }
+  .cover-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 28px 60px;
+    max-width: 680px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 8vw, 58px);
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 20px;
+  }
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(16px, 3.5vw, 21px);
+    color: var(--soft);
+    line-height: 1.5;
+    margin-bottom: 36px;
+  }
+  .cover-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--yellow);
+    margin-bottom: 28px;
+  }
+  .cover-hooks {
+    list-style: none;
+    margin-bottom: 44px;
+  }
+  .cover-hooks li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--soft);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    font-weight: 300;
+  }
+  .cover-hooks li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--yellow);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .cover-before-begin {
+    background: rgba(255,255,255,0.06);
+    border-left: 3px solid var(--yellow);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+  .cover-before-begin h3 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 8px;
+  }
+  .cover-before-begin p {
+    font-size: 13px;
+    color: var(--soft);
+    line-height: 1.6;
+  }
+  .cover-missed {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+  .start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--yellow);
+    color: var(--charcoal);
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 16px 28px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    align-self: flex-start;
+  }
+  .start-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255,200,0,0.3);
+  }
+  .start-btn svg { transition: transform 0.15s ease; }
+  .start-btn:hover svg { transform: translateX(3px); }
+
+  /* ── DAYS OVERVIEW ── */
+  .cover-overview {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 24px 28px 32px;
+    max-width: 680px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .overview-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .overview-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .overview-item:hover { background: rgba(255,255,255,0.05); }
+  .overview-num {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: var(--yellow);
+    min-width: 22px;
+    padding-top: 2px;
+  }
+  .overview-info { flex: 1; }
+  .overview-title {
+    font-size: 12px;
+    color: var(--soft);
+    line-height: 1.4;
+    margin-bottom: 2px;
+  }
+  .overview-theme {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── SPRINT WRAPPER ── */
+  #sprint-app { display: none; }
+
+  /* ── NAV BAR ── */
+  .nav-bar {
+    background: var(--charcoal);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--yellow);
+  }
+  .nav-brand {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yellow);
+  }
+  .nav-day-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--soft);
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress-bar-wrap {
+    background: var(--charcoal);
+    padding: 0 20px 14px;
+  }
+  .progress-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .progress-label {
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .dot.done { background: rgba(255,200,0,0.5); }
+  .dot.active { background: var(--yellow); transform: scale(1.3); }
+
+  /* ── DAY PAGE ── */
+  .day-page {
+    display: none;
+    animation: fadeSlide 0.35s ease forwards;
+  }
+  .day-page.active { display: block; }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Day header */
+  .day-header {
+    background: var(--charcoal);
+    padding: 24px 20px 28px;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .day-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 4px;
+  }
+  .day-badge {
+    width: 46px;
+    height: 46px;
+    background: var(--yellow);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .day-badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+  .day-badge-of {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 8px;
+    color: var(--charcoal);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .day-title-block { flex: 1; }
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(20px, 5vw, 28px);
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .day-theme {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    color: var(--soft);
+    font-style: italic;
+  }
+
+  /* Content area */
+  .day-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px 16px 100px;
+  }
+
+  /* Cards */
+  .card {
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px 10px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .card-body { padding: 4px 16px 16px; }
+
+  /* Brain card */
+  .card-brain { background: var(--sand); border-left: 4px solid var(--charcoal); }
+  .card-brain .card-header { color: var(--slate); border-bottom: 1px solid var(--sand-dark); }
+  .card-brain .card-body p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--slate);
+  }
+
+  /* Exercise card */
+  .card-exercise { background: var(--light); border-left: 4px solid var(--yellow); }
+  .card-exercise .card-header { color: var(--slate); border-bottom: 1px solid var(--sand); }
+  .card-exercise .card-body p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--slate);
+    margin-bottom: 10px;
+  }
+
+  /* Why card */
+  .card-why { background: var(--charcoal); border-left: 4px solid var(--yellow); }
+  .card-why .card-header { color: var(--yellow); border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .card-why .card-body p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--soft);
+  }
+  .card-why .card-body strong { color: var(--white); font-weight: 500; }
+
+  /* Notes card */
+  .card-notes { background: var(--white); border: 1px solid var(--sand); }
+  .card-notes .card-header { color: var(--slate); border-bottom: 1px solid var(--sand); }
+
+  /* Lists */
+  .exercise-list {
+    list-style: none;
+    margin: 8px 0;
+  }
+  .exercise-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.6;
+    padding: 6px 0;
+  }
+  .exercise-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--charcoal);
+    margin-top: 9px;
+    flex-shrink: 0;
+  }
+
+  /* Checkboxes */
+  .checkbox-list { list-style: none; margin: 8px 0; }
+  .checkbox-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.6;
+    padding: 5px 0;
+    cursor: pointer;
+  }
+  .checkbox-list li input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 4px;
+    flex-shrink: 0;
+    accent-color: var(--charcoal);
+    cursor: pointer;
+  }
+
+  /* Decision tree */
+  .decision-tree { margin: 8px 0; }
+  .dtree-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    background: var(--sand);
+  }
+  .dtree-trigger {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--charcoal);
+    white-space: nowrap;
+    padding-top: 1px;
+    min-width: 130px;
+  }
+  .dtree-action {
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.5;
+  }
+
+  /* Callout */
+  .callout {
+    background: var(--sand);
+    border-left: 3px solid var(--charcoal);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 18px;
+    margin: 12px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--charcoal);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  /* Note text */
+  .note-text {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.6;
+    margin-top: 8px !important;
+  }
+
+  /* Fillable fields */
+  .field-group { margin-bottom: 16px; }
+  .field-label {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  textarea {
+    width: 100%;
+    background: var(--cream);
+    border: none;
+    border-bottom: 1.5px solid var(--sand-dark);
+    border-radius: 4px 4px 0 0;
+    padding: 10px 12px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    color: var(--charcoal);
+    line-height: 1.6;
+    resize: vertical;
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+    min-height: 70px;
+  }
+  textarea:focus {
+    border-bottom-color: var(--charcoal);
+    background: var(--white);
+  }
+  textarea::placeholder { color: var(--soft); }
+
+  /* Two-column possibilities */
+  .two-col-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .two-col-header {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--sand);
+  }
+  .two-col-header.alt { color: var(--muted); }
+  .two-col-fields textarea { min-height: 160px; font-size: 14px; }
+
+  /* ── NAVIGATION BUTTONS ── */
+  .day-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-top: 1px solid var(--sand);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    z-index: 100;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .btn-back {
+    background: var(--sand);
+    color: var(--slate);
+  }
+  .btn-back:hover { background: var(--sand-dark); }
+  .btn-next {
+    background: var(--charcoal);
+    color: var(--yellow);
+    flex: 1;
+    justify-content: center;
+  }
+  .btn-next:hover { background: #222; }
+  .btn-home {
+    background: var(--sand);
+    color: var(--slate);
+  }
+  .btn-home:hover { background: var(--sand-dark); }
+
+  /* ── CLOSING PAGE ── */
+  .closing-page {
+    background: var(--charcoal);
+    min-height: 100vh;
+    display: none;
+    flex-direction: column;
+    padding: 40px 24px 100px;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+    animation: fadeSlide 0.35s ease forwards;
+  }
+  .closing-page.active { display: flex; }
+  .closing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(38px, 9vw, 56px);
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .closing-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--soft);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .closing-body {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+  .closing-rule {
+    width: 48px;
+    height: 2px;
+    background: rgba(255,255,255,0.15);
+    margin-bottom: 32px;
+  }
+  .closing-anchor {
+    margin-bottom: 40px;
+  }
+  .closing-anchor-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--soft);
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .closing-anchor textarea {
+    background: rgba(255,255,255,0.06);
+    border-bottom-color: rgba(255,255,255,0.2);
+    color: var(--white);
+    min-height: 60px;
+  }
+  .closing-anchor textarea:focus {
+    background: rgba(255,255,255,0.1);
+    border-bottom-color: var(--yellow);
+  }
+  .about-box {
+    background: rgba(255,255,255,0.05);
+    border-left: 3px solid var(--yellow);
+    border-radius: 0 10px 10px 0;
+    padding: 20px 20px 20px 22px;
+    margin-bottom: 24px;
+  }
+  .about-box h3 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 10px;
+  }
+  .about-box p {
+    font-size: 14px;
+    color: var(--soft);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .about-box a {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--yellow);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .footer-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ── SAVE/PRINT NOTE ── */
+  .save-note {
+    background: rgba(255,200,0,0.1);
+    border: 1px solid rgba(255,200,0,0.3);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    color: var(--soft);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .two-col-fields { grid-template-columns: 1fr; }
+    .dtree-item { flex-direction: column; gap: 4px; }
+    .dtree-trigger { white-space: normal; }
+    .overview-grid { grid-template-columns: 1fr; }
+    .day-nav { padding: 10px 16px; }
+    .btn { padding: 11px 16px; font-size: 11px; }
+  }
+
+  @media (min-width: 700px) {
+    .day-content { padding: 28px 24px 110px; }
+    .day-header { padding: 32px 24px 36px; }
+  }
+
+  .copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--soft);
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 13px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.15s ease;
+  }
+  .copy-btn:hover {
+    border-color: var(--yellow);
+    color: var(--yellow);
+  }
+  .copy-btn.copied {
+    border-color: var(--yellow);
+    color: var(--yellow);
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="cover" id="cover">
+  <div class="cover-eyebrow">Wellness at Work · Janell Saville</div>
+  <div class="cover-body">
+    <h1 class="cover-title">The Career Reset Sprint</h1>
+    <p class="cover-subtitle">What neuroscience says about feeling stuck, and what to do about it.</p>
+    <div class="cover-rule"></div>
+    <ul class="cover-hooks">
+      <li>Why your brain makes change feel more threatening than it is</li>
+      <li>How small actions restore a sense of control and momentum</li>
+      <li>A 7-day, 10-minute-a-day guided practice grounded in brain science</li>
+    </ul>
+    <div class="cover-before-begin">
+      <h3>Before you begin</h3>
+      <p>This sprint is designed for people navigating real constraints: financial, family, health, uncertainty. You do not need to be ready to make a big decision. You just need 10 minutes and a willingness to notice what is already true.</p>
+    </div>
+    <p class="cover-missed"><em>Missed a day? That is fine. Pick up where you left off, or skip to today. There is no right way to do this. Just forward.</em></p>
+    <button class="start-btn" onclick="startSprint()">
+      Begin Day 1
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="cover-overview">
+    <p class="overview-label">7 Days at a Glance</p>
+    <div class="overview-grid">
+      <div class="overview-item" onclick="goToDay(1)"><span class="overview-num">01</span><div class="overview-info"><div class="overview-title">What Is Actually in My Control?</div><div class="overview-theme">Clarity</div></div></div>
+      <div class="overview-item" onclick="goToDay(2)"><span class="overview-num">02</span><div class="overview-info"><div class="overview-title">What Are You Telling Yourself?</div><div class="overview-theme">Awareness</div></div></div>
+      <div class="overview-item" onclick="goToDay(3)"><span class="overview-num">03</span><div class="overview-info"><div class="overview-title">Tiny Move</div><div class="overview-theme">Action</div></div></div>
+      <div class="overview-item" onclick="goToDay(4)"><span class="overview-num">04</span><div class="overview-info"><div class="overview-title">What Is Actually in the Way?</div><div class="overview-theme">Constraint Mapping</div></div></div>
+      <div class="overview-item" onclick="goToDay(5)"><span class="overview-num">05</span><div class="overview-info"><div class="overview-title">Expanding Possibilities</div><div class="overview-theme">Possibility</div></div></div>
+      <div class="overview-item" onclick="goToDay(6)"><span class="overview-num">06</span><div class="overview-info"><div class="overview-title">The Temporary Reframe</div><div class="overview-theme">Perspective</div></div></div>
+      <div class="overview-item" onclick="goToDay(7)"><span class="overview-num">07</span><div class="overview-info"><div class="overview-title">What Changed?</div><div class="overview-theme">Reflection</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SPRINT APP ══ -->
+<div id="sprint-app">
+
+  <!-- Nav -->
+  <div class="nav-bar">
+    <span class="nav-brand">Wellness at Work · Janell Saville</span>
+    <span class="nav-day-label" id="nav-day-label">Day 1 of 7</span>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-dots">
+      <span class="progress-label">Progress</span>
+      <div class="dot active" onclick="goToDay(1)" title="Day 1"></div>
+      <div class="dot" onclick="goToDay(2)" title="Day 2"></div>
+      <div class="dot" onclick="goToDay(3)" title="Day 3"></div>
+      <div class="dot" onclick="goToDay(4)" title="Day 4"></div>
+      <div class="dot" onclick="goToDay(5)" title="Day 5"></div>
+      <div class="dot" onclick="goToDay(6)" title="Day 6"></div>
+      <div class="dot" onclick="goToDay(7)" title="Day 7"></div>
+    </div>
+  </div>
+
+  <!-- Save note -->
+  <div style="max-width:700px;margin:0 auto;padding:10px 16px 0;">
+    <div class="save-note">💾 Your responses are automatically saved to this device. You can close the browser and come back any day — your answers will still be here.</div>
+  </div>
+
+  <!-- ── DAY 1 ── -->
+  <div class="day-page active" id="day-1">
+    <div class="day-header">
+      <div class="day-badge-row">
+        <div class="day-badge"><span class="day-badge-num">1</span><span class="day-badge-of">of 7</span></div>
+        <div class="day-title-block">
+          <h2 class="day-title">What Is Actually in My Control?</h2>
+          <p class="day-theme">Clarity</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-content">
+      <div class="card card-brain">
+        <div class="card-header">🧠 Brain Science</div>
+        <div class="card-body">
+          <p>When things feel uncertain, your brain's threat system (the <strong>amygdala</strong>) becomes more active. It scans for risk and tries to protect you, often by focusing on what could go wrong. This can make everything feel bigger and more overwhelming than it actually is.</p>
+        </div>
+      </div>
+      <div class="card card-exercise">
+        <div class="card-header">✍️ Your Exercise</div>
+        <div class="card-body">
+          <p>Use the space below to list everything on your mind right now under <strong>three headings</strong>:</p>
+          <ul class="exercise-list">
+            <li>In my control</li>
+            <li>Not in my control</li>
+            <li>In my control, but risky right now</li>
+          </ul>
+          <p class="note-text">That third category matters. Some things are technically controllable but feel off-limits given your finances, family, or situation. Naming them is itself relieving.</p>
+        </div>
+      </div>
+      <div class="card card-notes">
+        <div class="card-header">📝 Your Notes</div>
+        <div class="card-body">
+          <div class="field-group"><label class="field-label">In my control</label><textarea rows="3" placeholder="Write your thoughts here..." data-key="d1_control"></textarea></div>
+          <div class="field-group"><label class="field-label">Not in my control</label><textarea rows="3" placeholder="Write your thoughts here..." data-key="d1_not_control"></textarea></div>
+          <div class="field-group"><label class="field-label">In my control, but risky right now</label><textarea rows="3" placeholder="Write your thoughts here..." data-key="d1_risky"></textarea></div>
+        </div>
+      </div>
+      <div class="card card-why">
+        <div class="card-header">💡 Why This Works</div>
+        <div class="card-body">
+          <p>This shifts activity from your threat system to your <strong>prefrontal cortex</strong>, the part responsible for decision-making and clarity. Your brain cannot problem-solve when it thinks you are in danger.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DAY 2 ── -->
+  <div class="day-page" id="day-2">
+    <div class="day-header">
+      <div class="day-badge-row">
+        <div class="day-badge"><span class="day-badge-num">2</span><span class="day-badge-of">of 7</span></div>
+        <div class="day-title-block">
+          <h2 class="day-title">What Are You Telling Yourself?</h2>
+          <p class="day-theme">Awareness</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-content">
+      <div class="card card-brain">
+        <div class="card-header">🧠 Brain Science</div>
+        <div class="card-body">
+          <p>Your brain fills in gaps with <strong>predictions</strong>. When you do not have information, it often defaults to worst-case scenarios to keep you safe. A lot of career stress comes from anticipation and uncertainty, not just workload. The story you tell yourself while waiting is often more exhausting than the situation itself.</p>
+        </div>
+      </div>
+      <div class="card card-exercise">
+        <div class="card-header">✍️ Your Exercise</div>
+        <div class="card-body">
+          <p>Think of something that has been <strong>uncertain or unresolved</strong> for you lately: a decision pending, a situation unclear, a conversation not yet had.</p>
+          <p>Write it down, then ask: what am I telling myself about this? Is that story helping me, or just filling the silence?</p>
+          <p>Then label each thought you notice:</p>
+          <ul class="exercise-list">
+            <li><strong>Fact:</strong> I know this to be true</li>
+            <li><strong>Interpretation:</strong> this is my read on things</li>
+            <li><strong>Fear-based prediction:</strong> this is what I am afraid might happen</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card card-notes">
+        <div class="card-header">📝 Your Notes</div>
+        <div class="card-body">
+          <div class="field-group"><label class="field-label">What is unresolved for me right now</label><textarea rows="3" placeholder="Write your thoughts here..." data-key="d2_unresolved"></textarea></div>
+          <div class="field-group"><label class="field-label">Thought 1 + label (fact / interpretation / fear)</label><textarea rows="2" placeholder="Write your thoughts here..." data-key="d2_thought1"></textarea></div>
+          <div class="field-group"><label class="field-label">Thought 2 + label</label><textarea rows="2" placeholder="Write your thoughts here..." data-key="d2_thought2"></textarea></div>
+          <div class="field-group"><label class="field-label">Thought 3 + label</label><textarea rows="2" placeholder="Write your thoughts here..." data-key="d2_thought3"></textarea></div>
+        </div>
+      </div>
+      <div class="card card-why">
+        <div class="card-header">💡 Why This Works</div>
+        <div class="card-body">
+          <p>You are separating <strong>signal from story</strong>. Most career stress lives in the story layer, not the facts. Labelling thoughts reduces their emotional charge without requiring you to fix the situation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DAY 3 ── -->
+  <div class="day-page" id="day-3">
+    <div class="day-header">
+      <div class="day-badge-row">
+        <div class="day-badge"><span class="day-badge-num">3</span><span class="day-badge-of">of 7</span></div>
+        <div class="day-title-block">
+          <h2 class="day-title">Tiny Move</h2>
+          <p class="day-theme">Action</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-content">
+      <div class="card card-brain">
+        <div class="card-header">🧠 Brain Science</div>
+        <div class="card-body">
+          <p>Motivation does not come first. <strong>Action creates motivation.</strong> Taking even a small action releases dopamine, which reinforces forward movement and reduces the feeling of being stuck.</p>
+        </div>
+      </div>
+      <div class="card card-exercise">
+        <div class="card-header">✍️ Your Exercise</div>
+        <div class="card-body">
+          <p>Choose <strong>one option</strong> based on where you are today:</p>
+          <div class="decision-tree">
+            <div class="dtree-item"><span class="dtree-trigger">⏱ 5 minutes</span><span class="dtree-action">Send one message or write one thought down.</span></div>
+            <div class="dtree-item"><span class="dtree-trigger">⏱ 15 minutes</span><span class="dtree-action">Have one informal conversation or read one thing that interests you.</span></div>
+            <div class="dtree-item"><span class="dtree-trigger">🪫 Completely drained</span><span class="dtree-action">Do nothing external. Just write one sentence about what is in your way right now.</span></div>
+          </div>
+          <p class="note-text">That last option matters. If something is blocking small steps, naming it is the step.</p>
+        </div>
+      </div>
+      <div class="card card-notes">
+        <div class="card-header">📝 Your Notes</div>
+        <div class="card-body">
+          <div class="field-group"><label class="field-label">The option I chose today</label><textarea rows="2" placeholder="Write your thoughts here..." data-key="d3_option"></textarea></div>
+          <div class="field-group"><label class="field-label">What I did, or what got in the way</label><textarea rows="3" placeholder="Write your thoughts here..." data-key="d3_action"></textarea></div>
+        </div>
+      </div>
+      <div class="card card-why">
+        <div class="card-header">💡 Why This Works</div>
+        <div class="card-body">
+          <p>You are training your brain to <strong>associate action with progress</strong>, not fear. The drained option ensures you stay in the sprint even on hard days, and what you write becomes useful data for Day 4.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DAY 4 ── -->
+  <div class="day-page" id="day-4">
+    <div class="day-header">
+      <div class="day-badge-row">
+        <div class="day-badge"><span class="day-badge-num">4</span><span class="day-badge-of">of 7</span></div>
+        <div class="day-title-block">
+          <h2 class="day-title">What Is Actually in the Way?</h2>
+          <p class="day-theme">Constraint Mapping</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-content">
+      <div class="card card-brain">
+        <div class="card-header">🧠 Brain Science</div>
+        <div class="card-body">
+          <p>When your nervous system is dysregulated (through stress, anxiety, or burnout), your brain <strong>prioritises survival over thinking clearly.</strong> People often do not know what a small step looks like, not because they lack ideas, but because something unnamed is blocking them. Surfacing that block is the real work.</p>
+        </div>
+      </div>
+      <div class="card card-exercise">
+        <div class="card-header">✍️ Your Exercise</div>
+        <div class="card-body">
+          <p>Ask yourself honestly: <strong>what is making it hard to move forward right now?</strong> Check anything that resonates:</p>
+          <ul class="checkbox-list">
+            <li><input type="checkbox" data-key="d4_cb1"> Low energy or burnout</li>
+            <li><input type="checkbox" data-key="d4_cb2"> Fear of being seen trying and failing</li>
+            <li><input type="checkbox" data-key="d4_cb3"> Unclear what is realistic given my finances or situation</li>
+            <li><input type="checkbox" data-key="d4_cb4"> Waiting for the big thing to change before anything else can</li>
+            <li><input type="checkbox" data-key="d4_cb5"> Do not know what a small step even looks like here</li>
+            <li><input type="checkbox" data-key="d4_cb6"> Something else</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card card-notes">
+        <div class="card-header">📝 Your Notes</div>
+        <div class="card-body">
+          <div class="field-group"><label class="field-label">The block that is most true for me right now</label><textarea rows="3" placeholder="Write your thoughts here..." data-key="d4_block"></textarea></div>
+          <div class="field-group"><label class="field-label">One thing that might loosen it, even slightly</label><textarea rows="2" placeholder="Write your thoughts here..." data-key="d4_loosen"></textarea></div>
+        </div>
+      </div>
+      <div class="card card-why">
+        <div class="card-header">💡 Why This Works</div>
+        <div class="card-body">
+          <p>Naming the real block <strong>reduces its power</strong>. You are not trying to solve it today, just make it visible. This helps your brain stop treating the obstacle as a threat and start treating it as information.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DAY 5 ── -->
+  <div class="day-page" id="day-5">
+    <div class="day-header">
+      <div class="day-badge-row">
+        <div class="day-badge"><span class="day-badge-num">5</span><span class="day-badge-of">of 7</span></div>
+        <div class="day-title-block">
+          <h2 class="day-title">Expanding Possibilities</h2>
+          <p class="day-theme">Possibility</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-content">
+      <div class="card card-brain">
+        <div class="card-header">🧠 Brain Science</div>
+        <div class="card-body">
+          <p>When stressed, your brain <strong>narrows its perception of options</strong> (called cognitive constriction). It tries to simplify the world to reduce risk, which means possibilities you would normally see become invisible.</p>
+        </div>
+      </div>
+      <div class="card card-exercise">
+        <div class="card-header">✍️ Your Exercise</div>
+        <div class="card-body">
+          <p>List <strong>10 possible directions</strong> split across two columns. No filter. No judgment. Unrealistic ones are welcome. They often point to what you actually want.</p>
+          <div class="two-col-fields">
+            <div>
+              <p class="two-col-header">Within my current life</p>
+              <textarea rows="8" placeholder="Options that work inside your real constraints..." data-key="d5_within"></textarea>
+            </div>
+            <div>
+              <p class="two-col-header alt">If things were different</p>
+              <textarea rows="8" placeholder="Options if constraints shifted or lifted..." data-key="d5_different"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-why">
+        <div class="card-header">💡 Why This Works</div>
+        <div class="card-body">
+          <p>You are widening your brain's perception of possibility, which <strong>reduces the feeling of being trapped.</strong> The two-column approach often surprises people: there are usually more options within their current life than they thought.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DAY 6 ── -->
+  <div class="day-page" id="day-6">
+    <div class="day-header">
+      <div class="day-badge-row">
+        <div class="day-badge"><span class="day-badge-num">6</span><span class="day-badge-of">of 7</span></div>
+        <div class="day-title-block">
+          <h2 class="day-title">The Temporary Reframe</h2>
+          <p class="day-theme">Perspective</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-content">
+      <div class="card card-brain">
+        <div class="card-header">🧠 Brain Science</div>
+        <div class="card-body">
+          <p>Your brain treats permanent situations as <strong>higher risk</strong>. When something feels endless, threat increases, and so does the pressure to solve it completely before moving.</p>
+        </div>
+      </div>
+      <div class="card card-exercise">
+        <div class="card-header">✍️ Your Exercise</div>
+        <div class="card-body">
+          <p>You may not be able to leave your situation right now, and that is real. This prompt is not asking you to pretend otherwise.</p>
+          <div class="callout">Within the situation I am already in: what is one thing I could do differently that would make today feel even slightly more like mine?</div>
+          <p class="note-text">The word <em>yours</em> is doing the work here. You are not changing the situation. You are reclaiming a small piece of agency inside it. Then act on one thing from that answer today.</p>
+        </div>
+      </div>
+      <div class="card card-notes">
+        <div class="card-header">📝 Your Notes</div>
+        <div class="card-body">
+          <div class="field-group"><label class="field-label">One thing I could do differently today</label><textarea rows="3" placeholder="Write your thoughts here..." data-key="d6_different"></textarea></div>
+          <div class="field-group"><label class="field-label">What I will actually do (be specific)</label><textarea rows="2" placeholder="Write your thoughts here..." data-key="d6_action"></textarea></div>
+        </div>
+      </div>
+      <div class="card card-why">
+        <div class="card-header">💡 Why This Works</div>
+        <div class="card-body">
+          <p>This <strong>reduces perceived threat</strong> and increases psychological flexibility, without requiring you to pretend your constraints do not exist. Small acts of self-determination, even inside a constrained situation, are genuinely restorative.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DAY 7 ── -->
+  <div class="day-page" id="day-7">
+    <div class="day-header">
+      <div class="day-badge-row">
+        <div class="day-badge"><span class="day-badge-num">7</span><span class="day-badge-of">of 7</span></div>
+        <div class="day-title-block">
+          <h2 class="day-title">What Changed?</h2>
+          <p class="day-theme">Reflection</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-content">
+      <div class="card card-brain">
+        <div class="card-header">🧠 Brain Science</div>
+        <div class="card-body">
+          <p>Your brain is constantly updating based on experience. <strong>Reflection helps consolidate new patterns.</strong> Without it, insights fade. Ending with a forward anchor, not just looking back, matters: people who feel like their career is happening to them need to leave with something they are choosing, not just something they noticed.</p>
+        </div>
+      </div>
+      <div class="card card-exercise">
+        <div class="card-header">✍️ Your Exercise</div>
+        <div class="card-body">
+          <p>Reflect on the past 7 days:</p>
+          <ul class="exercise-list">
+            <li>Where did I feel more in control this week?</li>
+            <li>What small actions made a difference?</li>
+            <li>What feels even slightly different from Day 1?</li>
+            <li><strong>What is the smallest thing I want to keep doing after this week?</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="card card-notes">
+        <div class="card-header">📝 Your Notes</div>
+        <div class="card-body">
+          <div class="field-group"><label class="field-label">Where I felt more in control</label><textarea rows="2" placeholder="Write your thoughts here..." data-key="d7_control"></textarea></div>
+          <div class="field-group"><label class="field-label">What made a difference</label><textarea rows="2" placeholder="Write your thoughts here..." data-key="d7_difference"></textarea></div>
+          <div class="field-group"><label class="field-label">What feels different from Day 1</label><textarea rows="2" placeholder="Write your thoughts here..." data-key="d7_changed"></textarea></div>
+          <div class="field-group"><label class="field-label">The one small thing I am carrying forward</label><textarea rows="2" placeholder="Write your thoughts here..." data-key="d7_forward"></textarea></div>
+        </div>
+      </div>
+      <div class="card card-why">
+        <div class="card-header">💡 Why This Works</div>
+        <div class="card-body">
+          <p>Reflection alone closes the loop. A <strong>forward anchor</strong> keeps momentum going. Ending with a choice, not just an insight, is how the sprint returns agency to you. That is the whole point.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CLOSING ── -->
+  <div class="closing-page" id="closing">
+    <h1 class="closing-title">You made it.</h1>
+    <p class="closing-sub">The goal was never to solve your career in 7 days.</p>
+    <p class="closing-body">It was to help your brain feel safe enough to think clearly, so you can move forward with more control, clarity, and momentum.</p>
+    <div class="closing-rule"></div>
+    <div class="closing-anchor">
+      <span class="closing-anchor-label">The one small thing I am carrying forward</span>
+      <textarea rows="2" placeholder="Write it here..." data-key="closing_anchor"></textarea>
+    </div>
+    <div class="about-box">
+      <h3>About Janell Saville</h3>
+      <p>Janell is a career and leadership coach with 25 years of global corporate experience. She blends coaching with wellness and neuroscience to help professionals realign their work with their values and energy. Her clients are people who are successful on paper but quietly wondering if there is something more.</p>
+      <a href="https://janellsaville.com" target="_blank">janellsaville.com →</a>
+    </div>
+    <button class="copy-btn" onclick="copyAllAnswers()" id="copy-btn">
+      Copy All My Answers
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1 1 0 011-1h7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+    </button>
+    <div class="footer-note">
+      <p>© 2026 Janell Saville · Wellness at Work</p>
+      <p style="margin-top:6px;font-size:10px;">Responses are saved to this browser and device.<br>Use the Copy button above to save them permanently.</p>
+    </div>
+  </div>
+
+  <!-- ── FIXED NAV ── -->
+  <div class="day-nav" id="day-nav">
+    <button class="btn btn-back" id="btn-back" onclick="prevDay()">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back
+    </button>
+    <button class="btn btn-next" id="btn-next" onclick="nextDay()">
+      Next Day
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="btn btn-home" onclick="showCover()" title="Home">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 6l6-5 6 5v8a1 1 0 01-1 1H3a1 1 0 01-1-1V6z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+</div><!-- end sprint-app -->
+
+<script>
+  let currentDay = 1;
+  const TOTAL = 7;
+
+  function startSprint() {
+    document.getElementById('cover').style.display = 'none';
+    document.getElementById('sprint-app').style.display = 'block';
+    goToDay(1);
+    window.scrollTo(0,0);
+  }
+
+  function showCover() {
+    document.getElementById('cover').style.display = 'flex';
+    document.getElementById('sprint-app').style.display = 'none';
+    window.scrollTo(0,0);
+  }
+
+  function goToDay(n) {
+    // Hide all days and closing
+    for (let i = 1; i <= TOTAL; i++) {
+      const el = document.getElementById('day-' + i);
+      if (el) el.classList.remove('active');
+    }
+    document.getElementById('closing').classList.remove('active');
+
+    currentDay = n;
+
+    if (n <= TOTAL) {
+      const el = document.getElementById('day-' + n);
+      if (el) el.classList.add('active');
+    } else {
+      document.getElementById('closing').classList.add('active');
+    }
+
+    // Update nav label
+    document.getElementById('nav-day-label').textContent =
+      n <= TOTAL ? `Day ${n} of ${TOTAL}` : 'Complete';
+
+    // Update progress dots
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, i) => {
+      dot.classList.remove('active', 'done');
+      if (i + 1 < n) dot.classList.add('done');
+      else if (i + 1 === n) dot.classList.add('active');
+    });
+
+    // Update buttons
+    const backBtn = document.getElementById('btn-back');
+    const nextBtn = document.getElementById('btn-next');
+    backBtn.style.display = n <= 1 ? 'none' : 'inline-flex';
+
+    if (n > TOTAL) {
+      nextBtn.style.display = 'none';
+      document.getElementById('day-nav').style.display = 'flex';
+    } else if (n === TOTAL) {
+      nextBtn.innerHTML = 'Finish <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      nextBtn.style.display = 'inline-flex';
+    } else {
+      nextBtn.innerHTML = 'Next Day <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      nextBtn.style.display = 'inline-flex';
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function nextDay() { goToDay(currentDay + 1); }
+  function prevDay() { if (currentDay > 1) goToDay(currentDay - 1); }
+
+  // Persist textarea values in sessionStorage
+  document.addEventListener('input', function(e) {
+    if (e.target.tagName === 'TEXTAREA' && e.target.dataset.key) {
+      localStorage.setItem(e.target.dataset.key, e.target.value);
+    }
+  });
+  document.addEventListener('change', function(e) {
+    if (e.target.type === 'checkbox' && e.target.dataset.key) {
+      localStorage.setItem(e.target.dataset.key, e.target.checked ? '1' : '0');
+    }
+  });
+
+  // Restore values on load
+  window.addEventListener('load', function() {
+    document.querySelectorAll('textarea[data-key]').forEach(function(el) {
+      const val = localStorage.getItem(el.dataset.key);
+      if (val) el.value = val;
+    });
+    document.querySelectorAll('input[type="checkbox"][data-key]').forEach(function(el) {
+      const val = localStorage.getItem(el.dataset.key);
+      if (val === '1') el.checked = true;
+    });
+  });
+
+  const dayLabels = {
+    d1_control: 'Day 1 — In my control',
+    d1_not_control: 'Day 1 — Not in my control',
+    d1_risky: 'Day 1 — In my control but risky',
+    d2_unresolved: 'Day 2 — What is unresolved',
+    d2_thought1: 'Day 2 — Thought 1',
+    d2_thought2: 'Day 2 — Thought 2',
+    d2_thought3: 'Day 2 — Thought 3',
+    d3_option: 'Day 3 — Option chosen',
+    d3_action: 'Day 3 — What I did',
+    d4_block: 'Day 4 — The block',
+    d4_loosen: 'Day 4 — What might loosen it',
+    d5_within: 'Day 5 — Within my current life',
+    d5_different: 'Day 5 — If things were different',
+    d6_different: 'Day 6 — One thing I could do differently',
+    d6_action: 'Day 6 — What I will actually do',
+    d7_control: 'Day 7 — Where I felt more in control',
+    d7_difference: 'Day 7 — What made a difference',
+    d7_changed: 'Day 7 — What feels different',
+    d7_forward: 'Day 7 — The one thing I am carrying forward',
+    closing_anchor: 'Closing — One small thing I am carrying forward',
+  };
+
+  function copyAllAnswers() {
+    let text = 'THE CAREER RESET SPRINT — My Answers\n';
+    text += '=====================================\n\n';
+    let hasContent = false;
+    for (const [key, label] of Object.entries(dayLabels)) {
+      const val = localStorage.getItem(key);
+      if (val && val.trim()) {
+        text += label.toUpperCase() + '\n';
+        text += val.trim() + '\n\n';
+        hasContent = true;
+      }
+    }
+    if (!hasContent) {
+      text += '(No answers saved yet)';
+    }
+    navigator.clipboard.writeText(text).then(function() {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = 'Copied to clipboard!';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.innerHTML = 'Copy All My Answers <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1 1 0 011-1h7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
+        btn.classList.remove('copied');
+      }, 2500);
+    }).catch(function() {
+      // Fallback for browsers that block clipboard
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.innerHTML = 'Copy All My Answers <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1 1 0 011-1h7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
+        btn.classList.remove('copied');
+      }, 2500);
+    });
+  }
+</script>
+</body>
+</html>
