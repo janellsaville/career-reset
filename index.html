@@ -719,7 +719,7 @@
     padding: 10px 14px;
     margin-bottom: 16px;
     font-size: 12px;
-    color: var(--soft);
+    color: var(--slate);
     line-height: 1.5;
     text-align: center;
   }
@@ -766,6 +766,84 @@
   .copy-btn.copied {
     border-color: var(--yellow);
     color: var(--yellow);
+  }
+
+  /* ── DOWNLOAD PDF BUTTON ── */
+  .pdf-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: var(--yellow);
+    border: none;
+    color: var(--charcoal);
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 13px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    transition: all 0.15s ease;
+  }
+  .pdf-btn:hover { background: #e6b400; }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { background: #fff !important; color: #383838 !important; font-family: 'Jost', sans-serif; }
+
+    /* Hide interactive chrome */
+    .cover, .nav-bar, .progress-bar-wrap, .save-note,
+    .day-nav, .closing-anchor, .about-box, .copy-btn,
+    .pdf-btn, .footer-note { display: none !important; }
+
+    /* Show sprint app and all days */
+    #sprint-app { display: block !important; }
+    .day-page { display: block !important; page-break-inside: avoid; margin-bottom: 32px; }
+    .closing-page { display: block !important; background: #383838 !important; padding: 32px 24px !important; margin-top: 32px; }
+
+    /* Day headers */
+    .day-header { background: #383838 !important; color: #fff; padding: 20px !important; margin-bottom: 0; }
+    .day-title { color: #fff !important; font-size: 22px !important; }
+    .day-theme { color: #C8BFB5 !important; }
+    .day-badge { background: #FFC800 !important; }
+    .day-badge-num, .day-badge-of { color: #383838 !important; }
+
+    /* Cards */
+    .card { border-radius: 6px; margin-bottom: 12px; overflow: visible; }
+    .card-brain { background: #E2D5C3 !important; border-left: 4px solid #383838; }
+    .card-exercise { background: #FAF7F2 !important; border-left: 4px solid #FFC800; }
+    .card-why { background: #383838 !important; border-left: 4px solid #FFC800; }
+    .card-why .card-body p { color: #C8BFB5 !important; }
+    .card-why .card-body strong { color: #fff !important; }
+    .card-notes { background: #fff !important; border: 1px solid #E2D5C3; }
+    .card-header { padding: 10px 14px 8px; }
+    .card-body { padding: 4px 14px 14px; }
+
+    /* Textareas become plain answer boxes */
+    textarea {
+      border: none !important;
+      border-bottom: 1px solid #C8BFB5 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      padding: 6px 0 !important;
+      min-height: 48px !important;
+      resize: none !important;
+      font-size: 14px !important;
+      color: #383838 !important;
+    }
+
+    /* Exercise lists */
+    .exercise-list li, .checkbox-list li { font-size: 14px; color: #5C5248 !important; }
+
+    /* Closing page */
+    .closing-title { color: #fff !important; font-size: 36px !important; }
+    .closing-sub { color: #C8BFB5 !important; }
+    .closing-body { color: #9B8E84 !important; }
   }
 </style>
 </head>
@@ -1173,6 +1251,10 @@
       <p>Janell is a career and leadership coach with 25 years of global corporate experience. She blends coaching with wellness and neuroscience to help professionals realign their work with their values and energy. Her clients are people who are successful on paper but quietly wondering if there is something more.</p>
       <a href="https://janellsaville.com" target="_blank">janellsaville.com →</a>
     </div>
+    <button class="pdf-btn" onclick="downloadPDF()">
+      Download PDF (with Questions &amp; Answers)
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
     <button class="copy-btn" onclick="copyAllAnswers()" id="copy-btn">
       Copy All My Answers
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1 1 0 011-1h7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
@@ -1201,6 +1283,24 @@
 </div><!-- end sprint-app -->
 
 <script>
+  function downloadPDF() {
+    // Make all days visible for print, then restore after
+    const days = [];
+    for (let i = 1; i <= TOTAL; i++) {
+      const el = document.getElementById('day-' + i);
+      if (el) days.push({ el, wasActive: el.classList.contains('active') });
+    }
+    // Temporarily show all days
+    days.forEach(d => d.el.classList.add('active'));
+
+    window.print();
+
+    // Restore state after print dialog closes
+    days.forEach(d => {
+      if (!d.wasActive) d.el.classList.remove('active');
+    });
+  }
+
   let currentDay = 1;
   const TOTAL = 7;
 
